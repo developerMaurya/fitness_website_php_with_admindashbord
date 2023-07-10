@@ -1,20 +1,11 @@
 <?php
 session_start();
 
-if (!isset($_SESSION['usertype']) && $_SESSION['usertype'] !== 'admin') {
-    header('location: ../login.php');
-    exit();
-}
-
-// If the URL doesn't match any specific page, redirect to the login page
-if ($_SERVER['PHP_SELF'] !== '/fitness/admin/dashbord.php') {
-    header('location: ../login.php');
-    exit();
+if(!isset($_SESSION['username'])){
+    header('location: ../admin/adminlogin.php');
 }
 
 ?>
-<!-- Rest of the code for dashbord.php -->
-
 <!DOCTYPE html>
 <!--=== Coding by CodingLab | www.codinglabweb.com === -->
 <html lang="en">
@@ -24,7 +15,7 @@ if ($_SERVER['PHP_SELF'] !== '/fitness/admin/dashbord.php') {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <!----======== CSS ======== -->
-    <link rel="stylesheet" href="./assets/css/style.css">
+    <link rel="stylesheet" href="style.css">
      
     <!----===== Iconscout CSS ===== -->
     <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
@@ -44,7 +35,7 @@ if ($_SERVER['PHP_SELF'] !== '/fitness/admin/dashbord.php') {
                 <img src="images/logo.png" alt="">
             </div>
 
-            <span class="logo_name"><?php echo $_SESSION['name'] ?></span>
+            <span class="logo_name"><?php echo $_SESSION['username'] ?></span>
         </div>
 
         <div class="menu-items">
@@ -145,26 +136,24 @@ if ($_SERVER['PHP_SELF'] !== '/fitness/admin/dashbord.php') {
                     <td>name</td>
                     <td>Email</td>
                     <td>password</td>
-                    <td>usertype</td>
                 </tr>
                 <?php
-include '../connection/conn.php';
-include './adminfunction.php';
-$query = allUser($con);
-while ($res = mysqli_fetch_assoc($query)) {
-?>
-<tr class="text-center">
-    <td><?php echo $res['id']; ?></td>
-    <td><?php echo $res['name']; ?></td>
-    <td><?php echo $res['email']; ?></td>
-    <td><?php echo $res['password']; ?></td>
-    <td><?php echo $res['usertype']; ?></td>
-</tr>
-<?php
-}
-?>
-</table>
+                include '../connection/conn.php';
+                include '../function/function.php';
+                $query = allUsers($con);
+                while ($res = mysqli_fetch_assoc($query)) {
+                ?>
+                <tr class="text-center">
+                    <td><?php echo $res['id']; ?></td>
+                    <td><?php echo $res['name']; ?></td>
+                    <td><?php echo $res['email']; ?></td>
+                    <td><?php echo $res['password']; ?></td>
 
+                </tr>
+                <?php
+                }
+                ?>
+               </table>
                
              </div>
 
@@ -205,6 +194,6 @@ while ($res = mysqli_fetch_assoc($query)) {
         </div>
     </section>
 
-    <script src="./assets/js/script.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>

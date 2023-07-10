@@ -1,5 +1,5 @@
 <?php
-include './connection/conn.php';
+include '../connection/conn.php';
 
 // Registration
 function InsertQuery($con, $name, $email, $phone, $message)
@@ -10,9 +10,9 @@ function InsertQuery($con, $name, $email, $phone, $message)
 }
 
 // User registration
-function UserRegister($con, $name, $email, $password,$usertype)
+function UserRegister($con, $name, $email, $password)
 {
-    $registerQuery = "INSERT INTO `userRegister`(`name`,`email`,`password`,`usertype`) VALUES ('$name','$email','$password','$usertype')";
+    $registerQuery = "INSERT INTO `userRegister`(`name`,`email`,`password`) VALUES ('$name','$email','$password')";
     $query = mysqli_query($con, $registerQuery);
     return $query;
 }
@@ -33,4 +33,19 @@ function AdminLoginQuery($con, $name, $password)
     return $query;
 }
 
+// Display all registered users
+function DisplayAllUsers($con)
+{
+    $allUsersQuery = "SELECT * FROM userRegister";
+    $query = mysqli_query($con, $allUsersQuery);
+    return $query;
+}
+
+// Display all interested users
+function DisplayAllInterestedUsers($con)
+{
+    $allUsersQuery = "SELECT * FROM registration";
+    $query = mysqli_query($con, $allUsersQuery);
+    return $query;
+}
 ?>
