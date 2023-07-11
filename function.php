@@ -49,6 +49,7 @@ function login($con)
             exit();
         
     }}
+
 // user registration
 function UserRegister1($con)
 {
@@ -64,5 +65,37 @@ function UserRegister1($con)
     }
 }
 // add customer review
+function customer($con)
+{
+    if (isset($_POST['customerSubmit'])) {
+        $name = $_POST['name'];
+        $message = $_POST['message'];
+        $image = $_FILES['image']['name'];
 
+        // Specify the directory where you want to store the uploaded images
+        $targetDir = "assets/uploads/";
+        $targetFile = $targetDir . basename($_FILES["image"]["name"]);
+        
+        // Move the uploaded file to the desired directory
+        move_uploaded_file($_FILES["image"]["tmp_name"], $targetFile);
+
+        // Get the file path relative to the project root
+        $imagePath = "fitness/" . $targetFile;
+
+        customerQuery($con, $name, $message, $imagePath);
+    }
+}
+// get all customer review
+function customerReview($con)
+{
+    $query=customerReviewQuery($con);
+    return $query;
+    }
+
+// get all services
+function services($con)
+{
+    $query=servicesQuery($con);
+    return $query;
+    }
 ?>

@@ -24,6 +24,9 @@ register($con);
   <meta name="keywords" content="" />
   <meta name="description" content="" />
   <meta name="author" content="" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+
 
   <title>GoldenGym</title>
 
@@ -261,89 +264,40 @@ At Golden Gym, you will find a well-equipped gymnasium featuring the latest exer
         </h2>
       </div>
       <div class="service_container">
+
+      <?php
+        include './connection/conn.php';
+        // include './function.php';
+        $query = services($con);
+        $counter = 0;
+        while ($res = mysqli_fetch_assoc($query)) {
+          $activeClass = ($counter == 0) ? 'active' : '';
+          ?>
+
+
         <div class="box">
-          <img src="./assets/images/s-1.jpg" alt="">
+          <!-- <img src="./assets/images/s-1.jpg" alt=""> -->
+         <img src="./<?php echo $res['image']; ?>" alt="">
           <h6 class="visible_heading">
-            CROSSFIT TRAINING
+            <?php echo $res['name'] ?>
           </h6>
           <div class="link_box">
             <a href="">
               <img src="./assets/images/link.png" alt="">
             </a>
             <h6>
-              CROSSFIT TRAINING
+            <?php echo $res['name'] ?>
             </h6>
           </div>
         </div>
-        <div class="box">
-          <img src="./assets/images/s-2.jpg" alt="">
-          <h6 class="visible_heading">
-            FITNESS
-          </h6>
-          <div class="link_box">
-            <a href="">
-              <img src="./assets/images/link.png" alt="">
-            </a>
-            <h6>
-              FITNESS
-            </h6>
-          </div>
-        </div>
-        <div class="box">
-          <img src="./assets/images/s-3.jpg" alt="">
-          <h6 class="visible_heading">
-            DYNAMIC STRENGTH TRAINING
-          </h6>
-          <div class="link_box">
-            <a href="">
-              <img src="./assets/images/link.png" alt="">
-            </a>
-            <h6>
-              DYNAMIC STRENGTH TRAINING
-            </h6>
-          </div>
-        </div>
-        <div class="box">
-          <img src="./assets/images/s-4.jpg" alt="">
-          <h6 class="visible_heading">
-            HEALTH
-          </h6>
-          <div class="link_box">
-            <a href="">
-              <img src="./assets/images/link.png" alt="">
-            </a>
-            <h6>
-              HEALTH
-            </h6>
-          </div>
-        </div>
-        <div class="box">
-          <img src="./assets/images/s-5.jpg" alt="">
-          <h6 class="visible_heading">
-            WORKOUT
-          </h6>
-          <div class="link_box">
-            <a href="">
-              <img src="./assets/images/link.png" alt="">
-            </a>
-            <h6>
-              WORKOUT
-            </h6>
-          </div>
-        </div>
-        <div class="box">
-          <img src="./assets/images/s-6.jpg" alt="">
-          <h6 class="visible_heading">
-            STRATEGIES
-          </h6>
-          <div class="link_box">
-            <a href="">
-              <img src="./assets/images/link.png" alt="">
-            </a>
-            <h6>
-              STRATEGIES
-            </h6>
-          </div>
+
+
+        
+<?php 
+        }
+        ?>
+
+
         </div>
       </div>
     </div>
@@ -435,26 +389,48 @@ At Golden Gym, you will find a well-equipped gymnasium featuring the latest exer
           <li data-target="#carouselExample2Indicators" data-slide-to="0" class="active"></li>
           <li data-target="#carouselExample2Indicators" data-slide-to="1"></li>
           <li data-target="#carouselExample2Indicators" data-slide-to="2"></li>
+          <li data-target="#carouselExample2Indicators" data-slide-to="3"></li>
         </ol>
         <div class="carousel-inner">
-          <div class="carousel-item active">
-            <div class="box">
-              <div class="img-box">
-                <img src="./assets/images/client.png" alt="">
-              </div>
-              <div class="detail-box">
-                <h5>
-                  Jhon
-                </h5>
-                <p>
-                "I have been a member of Golden Gym for over a year now, and I can confidently say that it is one of the best gyms I have ever been to. The facilities are top-notch, with a wide range of modern equipment and amenities. The trainers are knowledgeable and supportive, always willing to guide and motivate me. The variety of group fitness classes keeps my workouts exciting and challenging. Overall, Golden Gym has helped me achieve my fitness goals and I highly recommend it to anyone looking for a great gym experience."
 
 
-                </p>
+
+        <div class="carousel-inner">
+
+
+        
+        <?php
+        include './connection/conn.php';
+        // include './function.php';
+        $query = customerReview($con);
+        $counter = 0;
+        while ($res = mysqli_fetch_assoc($query)) {
+          $activeClass = ($counter == 0) ? 'active' : '';
+          ?>
+              <div class="carousel-item <?php echo $activeClass; ?>">
+                <div class="box">
+                  <div class="img-box">
+                    <img src="../<?php echo $res['image']; ?>" alt="">
+                  </div>
+                  <div class="detail-box">
+                    <h5>
+                      <?php echo $res['name']; ?>
+                    </h5>
+                    <p>
+                      <?php echo $res['message']; ?>
+                    </p>
+                  </div>
+                </div>
               </div>
-            </div>
-          </div>
-          <div class="carousel-item">
+          <?php
+          $counter++;
+        }
+        ?>
+</div>
+
+
+
+          <!-- <div class="carousel-item">
             <div class="box">
               <div class="img-box">
                 <img src="./assets/images/client2.png" alt="">
@@ -468,25 +444,21 @@ At Golden Gym, you will find a well-equipped gymnasium featuring the latest exer
                 </p>
               </div>
             </div>
-          </div>
-          <div class="carousel-item">
-            <div class="box">
-              <div class="img-box">
-                <img src="./assets/images/client3.png" alt="">
-              </div>
-              <div class="detail-box">
-                <h5>
-                  Smith
-                </h5>
-                <p>
-                " Golden Gym has become more than just a gym to me; it's like a second home."
-                </p>
-              </div>
-            </div>
-          </div>
+          </div> -->
+          
+
+
         </div>
       </div>
+      <div class="text-center mt-5">
+    <button class="btn btn-primary" onclick="openCustomerPage()">Give Review</button>
+</div>
 
+<script>
+    function openCustomerPage() {
+        window.location.href = "./customer.php";
+    }
+</script>
     </div>
   </section>
 

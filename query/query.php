@@ -32,5 +32,23 @@ function AdminLoginQuery($con, $name, $password)
     $query = mysqli_query($con, $loginQuery);
     return $query;
 }
-
+// customer query
+function customerQuery($con, $name, $message, $image)
+{
+    $customerQuery = "INSERT INTO `customer`(`name`, `message`, `image`) VALUES ('$name', '$message', '$image')";
+    $query = mysqli_query($con, $customerQuery);
+    return $query;
+}
+// customer review query
+function customerReviewQuery($con){
+    $customerReviewQuery="SELECT * FROM customer";
+    $query=mysqli_query($con,$customerReviewQuery);
+    return $query;
+}
+// get all services query
+function servicesQuery($con){
+    $servicesQuery="SELECT * FROM services";
+    $query=mysqli_query($con,$servicesQuery);
+    return $query;
+}
 ?>

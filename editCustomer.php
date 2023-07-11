@@ -25,7 +25,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <div class="shape"></div>
     </div>
     <form method="post" enctype="multipart/form-data">
-        <h3>Customer Review</h3>
+        <h3>Update Customer Review</h3>
         <label for="username">Username</label>
         <input type="text" placeholder="Enter Username" id="name" name="name">
 
@@ -37,7 +37,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         <button type="submit" name="customerSubmit">Submit</button>
         <div class="forgetbutton">
-        &nbsp;&nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp;<a href="index.php" >Goto homepage</a>
+        &nbsp;&nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp;<a href="./admin/dashbord.php" >Goto admindashboard</a>
 
     </div>
     </form>
