@@ -35,8 +35,11 @@ Pull requests are welcome. For major changes, please open an issue first to disc
 
 ## Images
 admin dashbord- 
-![image](https://github.com/developerMaurya/fitness_website_php_with_admindashbord/assets/137375643/c0612fd2-6ee2-4847-a7a7-6076f33f156c)
+![image](https://github.com/developerMaurya/fitness_website_php_with_admindashbord/assets/137375643/0f76be2a-f3d2-4b10-9c81-4480fdd0087b)
+
 
 user-
-![image](https://github.com/developerMaurya/fitness_website_php_with_admindashbord/assets/137375643/d10ba33e-f459-48fb-93f0-33ef11b7bcba)
+![image](https://github.com/developerMaurya/fitness_website_php_with_admindashbord/assets/137375643/08dbaf2e-35b4-492e-ad2d-f1c05a3778fa)
+
+![image](https://github.com/developerMaurya/fitness_website_php_with_admindashbord/assets/137375643/18f33085-0bc4-4368-b8b1-ea56acb06380)
 
