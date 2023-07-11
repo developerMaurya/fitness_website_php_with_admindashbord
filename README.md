@@ -32,6 +32,11 @@ This repository contains a PHP-based fitness website with an admin dashboard. Th
 ## Contributing
 
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
+# Video
+
+
+https://github.com/developerMaurya/fitness_website_php_with_admindashbord/assets/137375643/4443fa78-7f4a-42eb-ae6d-d072e54861ba
+
 
 ## Images
 admin dashbord- 
